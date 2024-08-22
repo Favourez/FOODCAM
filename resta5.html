@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMC Menu</title>
+    <link rel="stylesheet" href="styles/restau3.css">
+</head>
+<body>
+    <header>
+        <h1>KMC Menu</h1>
+    </header>
+    <div class="menu-container">
+        <!-- Menu Item 1 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc1.jpeg" alt="Fried Chicken">
+            <h2>Fried Chicken</h2>
+            <p>Price: 3000 CFA</p>
+            <button class="btn-add" onclick="addToCart('Fried Chicken', 3000)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 2 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc2.jpeg" alt="Chicken Nuggets">
+            <h2>Chicken Nuggets</h2>
+            <p>Price: 2500 CFA</p>
+            <button class="btn-add" onclick="addToCart('Chicken Nuggets', 2500)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 3 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc3.jpeg" alt="French Fries">
+            <h2>French Fries</h2>
+            <p>Price: 1500 CFA</p>
+            <button class="btn-add" onclick="addToCart('French Fries', 1500)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 4 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc4.jpeg" alt="Chocolate Cake">
+            <h2>Chocolate Cake</h2>
+            <p>Price: 2000 CFA</p>
+            <button class="btn-add" onclick="addToCart('Chocolate', 2000)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 5 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc5.jpeg" alt="Apple Pie">
+            <h2>Apple Pie</h2>
+            <p>Price: 2000 CFA</p>
+            <button class="btn-add" onclick="addToCart('Apple Pie', 2000)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 6 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc6.jpeg" alt="Milkshake">
+            <h2>Milkshake</h2>
+            <p>Price: 1500 CFA</p>
+            <button class="btn-add" onclick="addToCart('Milkshake', 1500)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 7 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc7.jpeg" alt="Coffee">
+            <h2>Coffee</h2>
+            <p>Price: 1000 CFA</p>
+            <button class="btn-add" onclick="addToCart('Coffee', 1000)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 8 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc8.jpeg" alt="Donuts">
+            <h2>Donuts</h2>
+            <p>Price: 1500 CFA</p>
+            <button class="btn-add" onclick="addToCart('Donuts', 1500)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 9 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc9.jpeg" alt="Chicken Burger">
+            <h2>Chicken Burger</h2>
+            <p>Price: 3500 CFA</p>
+            <button class="btn-add" onclick="addToCart('Chicken Burger', 3500)">Add to Cart</button>
+        </div>
+        <!-- Menu Item 10 -->
+        <div class="menu-item">
+            <img src="styles/menu/kmc10.jpeg" alt="Cheeseburger">
+            <h2>Cheeseburger</h2>
+            <p>Price: 4000 CFA</p>
+            <button class="btn-add" onclick="addToCart('Cheeseburger', 4000)">Add to Cart</button>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAB8cXZoawH3YqG7Rxr65QWkK6-bn4Ga_s",
+            authDomain: "shopping-cart-18a40.firebaseapp.com",
+            projectId: "shopping-cart-18a40",
+            storageBucket: "shopping-cart-18a40.appspot.com",
+            messagingSenderId: "478263825311",
+            appId: "1:478263825311:web:3968641a0d48e2807463aa",
+            measurementId: "G-9Y09S44GRT"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const firestore = getFirestore(app);
+        
+        // Function to add items to cart
+        window.addToCart = async function(itemName, itemPrice) {
+            try {
+                // Add product to Firestore
+                await addDoc(collection(firestore, 'cartItems'), {
+                    name: itemName,
+                    price: itemPrice,
+                    timestamp: new Date()
+                });
+                // Redirect to shopping cart page
+                window.location.href = 'shoppingcart.html';
+            } catch (error) {
+                console.error('Error adding product to cart: ', error);
+            }
+        };
+    </script>
+</body>
+</html>

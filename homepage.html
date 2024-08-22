@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODCAM - Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/homepage.css">
+    <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="homepage.html">
+                <img src="assets/logo.jpg" alt="FOODCAM Logo" class="logo">
+                FOODCAM
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="userprofile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orderplacement.html">My Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 id="welcome-message">Hungry? You are in the right place.</h1>
+                <p>Order any meal at any time and we will deliver it directly to your home.</p>
+                <a href="restaurantlistings.html" class="btn btn-order">Make an order</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/sush.jpeg" alt="Delicious food">
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="search-bar text-center mt-5">
+        <div class="container">
+            <form class="form-inline justify-content-center">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search for restaurants or dishes" aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Featured Restaurants</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="assets/img1.jpg" class="card-img-top" alt="Restaurant 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Restaurant 1</h5>
+                        <p class="card-text">Enjoy a variety of dishes at Restaurant 1 with excellent service.</p>
+                        <a href="resta1.html" class="btn btn-success">View Menu</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="assets/img2.jpeg" class="card-img-top" alt="Restaurant 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Restaurant 2</h5>
+                        <p class="card-text">Taste the best cuisine at Restaurant 2 with friendly staff.</p>
+                        <a href="resta2.html" class="btn btn-success">View Menu</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="assets/img5.jpg" class="card-img-top" alt="Restaurant 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Restaurant 3</h5>
+                        <p class="card-text">Fresh ingredients and a great ambiance await you at Restaurant 3.</p>
+                        <a href="resta3.html" class="btn btn-success">View Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="place-order text-center mt-5">
+        <div class="container">
+            <h2>Ready to Order?</h2>
+            <p>Browse our restaurant listings and place your order with ease.</p>
+            <a href="restaurantlistings.html" class="btn btn-success btn-lg">Place an Order</a>
+        </div>
+    </div>
+
+    <footer class="bg-success text-white text-center py-3 mt-5">
+        <p>&copy; 2024 FOODCAM. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyADEAFEpy5XLHw2ALho612JGHq47sfkvBM",
+            authDomain: "main-database-41df9.firebaseapp.com",
+            databaseURL: "https://main-database-41df9-default-rtdb.firebaseio.com",
+            projectId: "main-database-41df9",
+            storageBucket: "main-database-41df9.appspot.com",
+            messagingSenderId: "67919556149",
+            appId: "1:67919556149:web:1b0939df0328ddf27ecb7c",
+            measurementId: "G-QCC084TNQY"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Fetch and display the user's name
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = firebase.auth().currentUser;
+
+            if (user) {
+                // User is signed in.
+                document.getElementById('welcome-message').textContent = `Welcome Back, ${user.displayName}!`;
+            } else {
+                // No user is signed in.
+                document.getElementById('welcome-message').textContent = `Welcome Back!`;
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
