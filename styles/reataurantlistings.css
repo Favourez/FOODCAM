@@ -1,0 +1,98 @@
+body {
+    background-color: #e9ecef; /* Light gray background for the page */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.navbar {
+    background-color: #28a745; /* Green background for the navbar */
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 30px;
+}
+
+#restaurant-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.restaurant-card {
+    flex: 0 0 calc(33.333% - 20px); /* Three columns with space between */
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff; /* White background for each card */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden;
+    border: 1px solid #28a745; /* Green border */
+}
+
+.restaurant-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-card img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 5px solid #28a745; /* Green bottom border */
+}
+
+.restaurant-card .card-body {
+    background-color: #f8f9fa; /* Light gray background for card body */
+    border-radius: 0 0 10px 10px;
+    padding: 15px;
+}
+
+.restaurant-card h5 {
+    color: #28a745; /* Green color for restaurant names */
+    margin-bottom: 10px;
+}
+
+.restaurant-location {
+    font-weight: bold;
+    color: #28a745; /* Green color for locations */
+}
+
+.btn {
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
